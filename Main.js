@@ -1,4 +1,4 @@
-import { Fabrica } from "./js/Fabricabrica.js";
+import { Fabrica } from "./js/Fabrica.js";
 
 const fabrica = new Fabrica();
 
