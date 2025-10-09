@@ -22,16 +22,14 @@ export class Fabrica{
     }
 
     exportarDatos(n){
-        return `\n Piezas totales: ${n} 
-            \n\t· Eléctricas: ${this.factoria.contE}
-            \n\t\t - Barniz normal: ${this.estacion.contBN}
-            \n\t\t - Barniz especial: ${this.estacion.contBE}
-
-            \n\t· Mecánicas: ${this.factoria.contM}
-            \n\t\t - Galvanizadas: ${this.estacion.contGal}
-            \n\t\t - Pulidas: ${this.estacion.contPul}
-            \n\t\t - Pintadas: ${this.estacion.contPint}    
-            `;
+        return `Piezas totales: ${n} 
+· Eléctricas: ${this.factoria.contE}
+  - Barniz normal: ${this.estacion.contBN}
+  - Barniz especial: ${this.estacion.contBE}
+· Mecánicas: ${this.factoria.contM}
+  - Galvanizadas: ${this.estacion.contGal}
+  - Pulidas: ${this.estacion.contPul}
+  - Pintadas: ${this.estacion.contPint}`;
     }
 }
 
