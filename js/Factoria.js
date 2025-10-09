@@ -9,8 +9,8 @@ export class Factoria {
     }
 
     //METODOS
-    generarPieza(p1) {
-            if ((Math.floor(Math.random() * 100)) < p1) { // CASO P1 Electrico
+    generarPieza() {
+            if ((Math.floor(Math.random() * 100)) < this.p1) { // CASO P1 Electrico
                 this.contE++;
                 return new PiezaElectrica;
             } else { // CASO P2 Mecanico

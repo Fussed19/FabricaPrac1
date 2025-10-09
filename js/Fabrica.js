@@ -19,6 +19,8 @@ export class Fabrica{
                 (gasto de memoria inecesario para el enunciado, pero se hace logico que se guarden las piezas generadas)
                 */
         }
+
+        return this.exportarDatos(n);
     }
 
     exportarDatos(n){

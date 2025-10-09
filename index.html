@@ -3,42 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test JS</title>
+    <title>Prueba Fabrica</title>
 </head>
 <body>
-    <h1>Test de JavaScript</h1>
+    <h1>Prueba Fabrica</h1>
+    <pre id="output"></pre> <!-- Aquí pondremos los datos -->
 
     <script type="module">
-        import { PiezaElectrica, PiezaMecanica } from './js/Pieza.js';
-        import { Factoria } from './js/Factoria.js';
-        import { EstacionTratamiento } from './js/EstacionTratamiento.js';
         import { Fabrica } from './js/Fabrica.js';
 
-        console.log("🔹 TEST: PiezaElectrica");
-        const piezaE = new PiezaElectrica();
-        console.log(piezaE);
-
-        console.log("🔹 TEST: PiezaMecanica");
-        const piezaM = new PiezaMecanica();
-        console.log(piezaM);
-
-        console.log("🔹 TEST: Factoria");
-        const factoria = new Factoria(50);
-        const piezaGenerada = factoria.generarPieza(50);
-        console.log(factoria);
-        console.log("Pieza generada:", piezaGenerada);
-
-        console.log("🔹 TEST: EstacionTratamiento");
-        const estacion = new EstacionTratamiento();
-        const piezaTratada = estacion.procesarPieza(piezaGenerada);
-        console.log(estacion);
-        console.log("Pieza tratada:", piezaTratada);
-
-        console.log("🔹 TEST: Fabrica");
         const fabrica = new Fabrica();
-        fabrica.fabricar(5);
-        console.log(fabrica);
-        console.log("Exportar datos:\n", fabrica.exportarDatos(5));
+        const datos = fabrica.fabricar(100);
+
+        // Mostramos en consola
+        console.log(datos);
+
+        // Mostramos en HTML
+        document.getElementById("output").textContent = datos;
     </script>
 </body>
 </html>
