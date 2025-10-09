@@ -1,7 +1,7 @@
 import { Factoria } from "./Factoria.js";
 import { EstacionTratamiento } from "./EstacionTratamiento.js";
 
-class Fabrica{
+export class Fabrica{
     //CONSTRUCTOR
     constructor(){
         this.factoria = new Factoria();
