@@ -4,7 +4,8 @@ export class EstacionTratamiento {
     //CONSTRUCTOR
     constructor(){
         //CONTADORES 
-        this.contBN; this.contBE; this.contGal; this.contPul; this.contPint; 
+        this.contBN = 0; this.contBE= 0; 
+        this.contGal= 0; this.contPul= 0; this.contPint= 0; 
     }
 
     //METODOS
@@ -12,25 +13,25 @@ export class EstacionTratamiento {
     procesarPieza(pieza){
         if(pieza instanceof PiezaElectrica){ //Comprobamos si es una instancia de electrica
             if(pieza.potencia<10){ // SI ES DE 1 o 5W
-                contBN++;
+                this.contBN++;
                 pieza.marca = "Barnizado Normal";
                 return pieza;
             } else { // SI ES DE 10 o 20W
-                contBE++;
+                this.contBE++;
                 pieza.marca = "Barnizado Especial";
                 return pieza;
             }
         } else if(pieza instanceof PiezaMecanica){ //Caso contrario, pieza mecanica
             if(pieza.material == "Acero"){ //SI es de acero
-                contGal++;
+                this.contGal++;
                 pieza.marca = "Galvanizada";
                 return pieza;
             } else if(pieza.material == "Titanio"){ //SI es de titanio
-                contPul++;
+                this.contPul++;
                 pieza.marca = "Pulida";
                 return pieza;
             } else { //SI es de carbono
-                contPint++;
+                this.contPint++;
                 pieza.marca = "Pintada";
                 return pieza;
             }
