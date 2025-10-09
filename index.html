@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Práctica 1 – La Fábrica de Piezas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>🏭 Fábrica de Piezas</h1>
+    <p><strong>Autor:</strong> Tu Nombre — <em>Octubre 2025</em></p>
+  </header>
+
+  <main>
+    <section class="controles">
+      <h2>Simulación</h2>
+      <p>Selecciona la cantidad de turnos:</p>
+      <button onclick="fabricar(100)">Simular 100 piezas</button>
+      <button onclick="fabricar(1000)">Simular 1000 piezas</button>
+    </section>
+
+    <section class="resultado">
+      <h2>Resultado</h2>
+      <div id="output">Pulsa un botón para iniciar la simulación.</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Fundamentos de Tecnología de Videojuegos — Curso 2025/2026</p>
+  </footer>
+
+  <!-- Orden correcto de scripts -->
+  <script src="js/Pieza.js"></script>
+  <script src="js/Factoria.js"></script>
+  <script src="js/EstacionTratamiento.js"></script>
+  <script src="js/Fabrica.js"></script>
+</body>
+</html>
