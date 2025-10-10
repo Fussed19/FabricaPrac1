@@ -3,23 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba Fabrica</title>
+    <title>Fabricación de Piezas</title>
 </head>
 <body>
-    <h1>Prueba Fabrica</h1>
-    <pre id="output"></pre> <!-- Aquí pondremos los datos -->
+    <h1>Simulador de Fabricación</h1>
+    
+    <!-- Botones para fabricar piezas -->
+    <button id="fabricar100">Fabricar 100 Piezas</button>
+    <button id="fabricar1000">Fabricar 1000 Piezas</button>
+
+    <!-- Área para mostrar el resultado -->
+    <div id="resultado"></div>
 
     <script type="module">
-        import { Fabrica } from './js/Fabrica.js';
+        // Importar las clases necesarias
+        import { Fabrica } from './Fabrica.js';
 
+        // Crear una instancia de la fábrica
         const fabrica = new Fabrica();
-        const datos = fabrica.fabricar(100);
 
-        // Mostramos en consola
-        console.log(datos);
+        // Obtener los botones y el área de resultado
+        const boton100 = document.getElementById('fabricar100');
+        const boton1000 = document.getElementById('fabricar1000');
+        const resultadoDiv = document.getElementById('resultado');
 
-        // Mostramos en HTML
-        document.getElementById("output").textContent = datos;
+        // Función para mostrar el resultado
+        function mostrarResultado(piezas) {
+            resultadoDiv.innerHTML = piezas;
+        }
+
+        // Event listener para el botón de 100 piezas
+        boton100.addEventListener('click', () => {
+            const resultado = fabrica.fabricar(100);
+            mostrarResultado(resultado);
+        });
+
+        // Event listener para el botón de 1000 piezas
+        boton1000.addEventListener('click', () => {
+            const resultado = fabrica.fabricar(1000);
+            mostrarResultado(resultado);
+        });
     </script>
 </body>
 </html>
