@@ -1,6 +1,6 @@
 import { Fabrica } from "./Fabrica.js";
 
-const fabrica = new Fabrica();
+let fabrica = new Fabrica();
 
 document.getElementById('fabricar100').addEventListener('click', () => { 
     const salida = fabrica.fabricar(100);
