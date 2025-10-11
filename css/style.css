@@ -7,7 +7,7 @@
 
 
 body {
-    background-color: #f4f7fa; /* Fondo gris claro */
+    background-color: #665f6c; 
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -16,12 +16,12 @@ body {
 }
 
 .caja {
-    background-color: white;
+    background-color: rgb(34, 28, 39);
     padding: 40px;
-    border-radius: 15px; /* Bordes redondeados */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); 
     width: 100%;
-    max-width: 600px; /* Ancho máximo para mantenerlo compacto */
+    max-width: 600px;
     text-align: center;
 }
 
@@ -29,10 +29,10 @@ h1 {
     font-size: 2.5rem;
 }
 
-/* Estilos para los botones */
+
 button {
-    background-color: #007bff; /* Azul para los botones */
-    color: white;
+    background-color: #54186b;
+    color: rgb(255, 244, 244);
     padding: 15px 30px;
     font-size: 1.1rem;
     border: none;
@@ -44,24 +44,24 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
-    transform: translateY(-3px); /* Efecto de "sombra" al pasar el mouse */
+    background-color: #320b42; 
+    transform: translateY(-2px);
 }
 
 button:active {
-    transform: translateY(1px); /* Efecto "clic" al presionar */
+    transform: translateY(1px);
 }
 
 
 #salida {
     margin-top: 30px;
-    background-color: #7092b4; /* Fondo gris claro */
+    background-color: #887691; 
     color: #333;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 6px;
     min-height: 100px;
     font-size: 1rem;
-    white-space: pre-line; /* Permite saltos de línea en el texto */
+    white-space: pre-line;
     text-align: left;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
 }
