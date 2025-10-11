@@ -8,11 +8,12 @@ export class Fabrica{
         this.estacion = new EstacionTratamiento();
         this.almacen = [];
     }
+    //METODOS
 
     fabricar(n){
         for(let i = 0; i<n;i++){
             this.almacen.push(this.estacion.procesarPieza(this.factoria.generarPieza()));  
-            /*PArece enrevesado, pero simplemente desde dentro a fuera:  
+            /*Parece enrevesado, pero simplemente desde dentro a fuera:  
                 1- this.factoria.generarPieza --> devuelve una pieza generada aleatoriamente
                 2- this.estacion.procesasrPieza --> le añade la marca segun tipo
                 3- this.almacen.push --> esto es opcional, simplemente guarda las piezas generadas en un array 
@@ -22,7 +23,7 @@ export class Fabrica{
 
         return this.exportarDatos(n);
     }
-
+    //Este devuelve una cadena con los resultados
     exportarDatos(n){
         return `Piezas totales: ${n} 
     \n\t · Eléctricas: ${this.factoria.contE}
