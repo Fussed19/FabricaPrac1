@@ -38,12 +38,16 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
         let fabrica = new Fabrica();
         const salida = fabrica.fabricar(100);
         document.getElementById('salida').innerText = salida; 
+
+        actualizarGrafico(fabrica);
     });
     //Si pulsa el de 1000
     document.getElementById('fabricar1000').addEventListener('click', () => { 
         let fabrica = new Fabrica();
         const salida = fabrica.fabricar(1000);
         document.getElementById('salida').innerText = salida; 
+
+        actualizarGrafico(fabrica);
     });
 
 });
