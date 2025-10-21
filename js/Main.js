@@ -15,17 +15,22 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
         const { contE, contM } = datos.factoria;
         const { contBN, contBE, contGal, contPul, contPint } = datos.estacion;
 
+        //QUITAMOS EL OCULTO A LOS CONTENEDORES DE LAS GRAFICAS
+        document.getElementById('tituloGraficas').classList.remove('oculto');
+        document.getElementById('graficoGeneral').classList.remove('oculto');
+        document.getElementById('subgraficos').classList.remove('oculto');
+
         if (chartG) chart.destroy(); // destruir anterior si existe
         if (chartE) chart.destroy();
         if (chartM) chart.destroy();
         //GRAFICA GENERAL
-        chartG = new Chart(ctx, {
+        chartG = new Chart(ctxG, {
             type: 'doughnut',
             data: {
                 labels: ['Eléctricas', 'Mecánicas'],
                 datasets: [{
                     data: [contE, contM],
-                    backgroundColor: ['#e9ff23ff', '#ff0000c0'],
+                    backgroundColor: ['#3498db', '#e74c3c'],
                     borderWidth: 0
                 }]
             },
@@ -40,14 +45,14 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
             }
         });
         //GRAFICA ELECTRICA
-        chartE = new Chart(ctx, {
+        chartE = new Chart(ctxE, {
             type: 'bar',
             data: {
                 labels: ['Barnizado Normal', 'Barnizado Especial'],
                 datasets: [{
                     label: 'Cantidad',
                     data: [contBN, contBE],
-                    backgroundColor: ['#f2ff82ff', '#48b400d3'],
+                    backgroundColor: ['#3498db', '#2ecc71'],
                 }]
             },
             options: {
@@ -62,14 +67,14 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
             }
         });
         //GRAFICA MECANICA
-        chartM = new Chart(ctx, {
+        chartM = new Chart(ctxM, {
             type: 'bar',
             data: {
                 labels: ['Galvanizado', 'Pulido', 'Pintado'],
                 datasets: [{
                     label: 'Cantidad',
                     data: [contGal, contPul, contPint],
-                    backgroundColor: ['#f1cd89ff', '#886825ff', '#4d2e00ff'],
+                    backgroundColor: ['#9b59b6', '#f1c40f', '#e67e22'],
                 }]
             },
             options: {

@@ -1,4 +1,4 @@
-* {
+* { /* RESET*/
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,7 +7,7 @@
 
 /* CUERPO */
 body {
-    background-color: #665f6c; 
+    background-color: #f5f5f5; 
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -15,68 +15,45 @@ body {
     padding: 20px;
     text-align: center;
 }
-/* CAJA (BOTONES + SALIDA) */
+/* CAJA (BOTONES + SALIDA + graficas) */
 .caja {
-    background-color: rgb(106, 49, 154);
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); 
     width: 100%;
     max-width: 900px;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
-
-canvas {
-    max-width: 100%;
-    height: auto;
-    margin: 20px 0;
-}
-
-.subgraficos {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    width: 100%;
-    flex-wrap: wrap;
-}
-
-.subgrafico {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 15px;
-    flex: 1 1 45%;
-    max-width: 45%;
-    box-sizing: border-box;    
-}
-.subgrafico h3 {
-    color: white;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-}
-
+/* TITULOS */
 h1 {
     font-size: 2.5rem;
     color: rgb(218, 212, 221);
 }
+.grafico-titulo {
+    font-size: 1.4rem;
+    color: #34495e;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
 
 /* BOTONES */
 button {
-    background-color: #54186b;
-    color: rgb(218, 212, 221);
-    padding: 15px 30px;
-    font-size: 1.1rem;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.2s ease;
     margin: 10px 0;
-    width: 200px;
 }
 /* AL PASAR POR ENCIMA DEL BOTON */
 button:hover {
-    background-color: #320b42; 
+    background-color: #2c80b4; 
     transform: translateY(-2px);
 }
 /* BOOTN PULSADO */
@@ -87,24 +64,47 @@ button:active {
 /* SALIDA DEL RESULTADO */
 #salida {
     margin-top: 30px;
-    background-color: #d8b8e7; 
-    color: #333;
+    background-color: #ecf0f1; 
+    color: #2c3e50;
     padding: 15px;
-    border-radius: 6px;
-    min-height: 100px;
+    border-radius: 8px;
+    min-height: 80px;
     font-size: 1rem;
-    white-space: pre;
+    white-space: pre-wrap;
     text-align: left;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-#grafico {
-    width : 90%;
-    margin-top: 30px;
-    max-width: 400px;
-    height: 250px;
-    margin-left: auto;
-    margin-right: auto;
+/* GRAFICAS*/
+canvas {
+    width: 100% !important;
+    height: 300px !important;
+    margin: 20px 0;
 }
+
+#subgraficos {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.subgrafico {
+    background-color: #f0f6fa;;
+    border-radius: 10px;
+    padding: 15px;
+    flex: 1 1 45%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.subgrafico h3 {
+    color: #2980b9;
+    margin-bottom: 15px;
+}
+
+.oculto {
+    display: none !important;
+}
+
 
 
