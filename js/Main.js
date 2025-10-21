@@ -119,6 +119,22 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
 
         actualizarGrafico(fabrica);
     });
+    //CAMPO PERSONALIZADO
+    document.getElementById('fabricarPersonalizado').addEventListener('click', () => {
+        const input = document.getElementById('cantidadPersonalizada');
+        const cantidad = parseInt(input.value);
+
+        if (isNaN(cantidad) || cantidad <= 0) {
+            alert("Por favor, introduce una cantidad válida mayor que 0.");
+            return;
+        }
+
+        const fabrica = new Fabrica();
+        const salida = fabrica.fabricar(cantidad);
+        document.getElementById('salida').innerText = salida;
+
+        actualizarGrafico(fabrica);
+    });
 
 });
 
