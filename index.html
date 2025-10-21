@@ -24,7 +24,24 @@
         <!-- SALIDA DEL RESULTADO-->
         <pre id="salida"></pre>
 
-        <canvas id="grafico" width="400" height="300"></canvas>
+
+        <!-- GRAFICO DONUT PRINCIPAL-->
+        <h2>Distribución de Piezas Generadas</h2>
+        <canvas id="graficoGeneral"></canvas>
+
+        <!-- SUBGRAFICAS DE BARRAS-->
+        <div id="subgraficos">
+            <!-- Electricas-->
+            <div class="subgrafico">
+                <h3>Piezas Eléctricas</h3>
+                <canvas id="graficoElectrica"></canvas>
+            </div>
+            <!-- MEcanicas-->
+            <div class="subgrafico">
+                <h3>Piezas Mecánicas</h3>
+                <canvas id="graficoMecanica"></canvas>
+            </div>        
+        </div>
         
     </div>
     <!-- SCRIPT DE JAVASCRIPT-->

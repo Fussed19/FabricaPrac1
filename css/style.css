@@ -11,18 +11,49 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 20px;
     text-align: center;
 }
 /* CAJA (BOTONES + SALIDA) */
 .caja {
     background-color: rgb(106, 49, 154);
-    padding: 40px;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2); 
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.subgraficos {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.subgrafico {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    flex: 1 1 45%;
+    max-width: 45%;
+    box-sizing: border-box;    
+}
+.subgrafico h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
 h1 {
@@ -66,3 +97,14 @@ button:active {
     text-align: left;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
 }
+
+#grafico {
+    width : 90%;
+    margin-top: 30px;
+    max-width: 400px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
