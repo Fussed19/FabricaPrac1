@@ -3,13 +3,19 @@ import { Fabrica } from "./Fabrica.js";
 //COMPROBAMOS EL DOM LO PRIMERO
 document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion anonima.
 
-    const ctxG = document.getElementById('graficoGeneral').getContext('2d');
-    const ctxE = document.getElementById('graficoElectrica').getContext('2d');
-    const ctxM = document.getElementById('graficoMecanica').getContext('2d');
-
     let chartG = null;
     let chartE = null;
     let chartM = null;
+
+    function resetCanvas(id) {
+        const canvas = document.getElementById(id);
+        const parent = canvas.parentNode;
+        const newCanvas = document.createElement('canvas');
+        newCanvas.id = id;
+        canvas.remove(); // elimina el canvas viejo
+        parent.appendChild(newCanvas); // añade el nuevo
+        return newCanvas.getContext('2d');
+    }
 
     function actualizarGrafico(datos) {
         const { contE, contM } = datos.factoria;
@@ -20,22 +26,13 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
         document.getElementById('graficoGeneral').classList.remove('oculto');
         document.getElementById('subgraficos').classList.remove('oculto');
 
-        function resetCanvas(id) {
-            const canvas = document.getElementById(id);
-            const parent = canvas.parentNode;
-            const newCanvas = canvas.cloneNode(true);
-            newCanvas.id = id; // Asegurar mismo id
-            parent.replaceChild(newCanvas, canvas);
-            return newCanvas.getContext('2d');
-        }   
-
         // Resetear los canvas correctamente
-        const newCtxG = resetCanvas('graficoGeneral');
-        const newCtxE = resetCanvas('graficoElectrica');
-        const newCtxM = resetCanvas('graficoMecanica');
+        const ctxG = resetCanvas('graficoGeneral');
+        const ctxE = resetCanvas('graficoElectrica');
+        const ctxM = resetCanvas('graficoMecanica');
 
         //GRAFICA GENERAL
-        chartG = new Chart(newCtxG, {
+        chartG = new Chart(ctxG, {
             type: 'doughnut',
             data: {
                 labels: ['Eléctricas', 'Mecánicas'],
@@ -56,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
             }
         });
         //GRAFICA ELECTRICA
-        chartE = new Chart(newCtxE, {
+        chartE = new Chart(ctxE, {
             type: 'bar',
             data: {
                 labels: ['Barnizado Normal', 'Barnizado Especial'],
@@ -78,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
             }
         });
         //GRAFICA MECANICA
-        chartM = new Chart(newCtxM, {
+        chartM = new Chart(ctxM, {
             type: 'bar',
             data: {
                 labels: ['Galvanizado', 'Pulido', 'Pintado'],
