@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
     function actualizarGrafico(datos) {
         const { contE, contM } = datos.factoria;
         const { contBN, contBE, contGal, contPul, contPint } = datos.estacion;
-
+        console.log('Datos recibidos en actualizarGrafico:', datos);
+        
         // Mostrar las gráficas
         document.getElementById('tituloGraficas').classList.remove('oculto');
         document.getElementById('graficoGeneral').classList.remove('oculto');
