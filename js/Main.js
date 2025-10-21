@@ -7,31 +7,26 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
     let chartE = null;
     let chartM = null;
 
-    function resetCanvas(id) {
-        const canvas = document.getElementById(id);
-        const parent = canvas.parentNode;
-        const newCanvas = document.createElement('canvas');
-        newCanvas.id = id;
-        canvas.remove(); // elimina el canvas viejo
-        parent.appendChild(newCanvas); // añade el nuevo
-        return newCanvas.getContext('2d');
-    }
-
     function actualizarGrafico(datos) {
         const { contE, contM } = datos.factoria;
         const { contBN, contBE, contGal, contPul, contPint } = datos.estacion;
 
-        //QUITAMOS EL OCULTO A LOS CONTENEDORES DE LAS GRAFICAS
+        // Mostrar las gráficas
         document.getElementById('tituloGraficas').classList.remove('oculto');
         document.getElementById('graficoGeneral').classList.remove('oculto');
         document.getElementById('subgraficos').classList.remove('oculto');
 
-        // Resetear los canvas correctamente
-        const ctxG = resetCanvas('graficoGeneral');
-        const ctxE = resetCanvas('graficoElectrica');
-        const ctxM = resetCanvas('graficoMecanica');
+        // Destruir gráficas anteriores si existen
+        if (chartG) chartG.destroy();
+        if (chartE) chartE.destroy();
+        if (chartM) chartM.destroy();
 
-        //GRAFICA GENERAL
+        // Obtener contextos
+        const ctxG = document.getElementById('graficoGeneral').getContext('2d');
+        const ctxE = document.getElementById('graficoElectrica').getContext('2d');
+        const ctxM = document.getElementById('graficoMecanica').getContext('2d');
+
+        // Crear gráficos 
         chartG = new Chart(ctxG, {
             type: 'doughnut',
             data: {
@@ -52,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
                 maintainAspectRatio: false
             }
         });
-        //GRAFICA ELECTRICA
+
         chartE = new Chart(ctxE, {
             type: 'bar',
             data: {
@@ -64,17 +59,13 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
                 }]
             },
             options: {
-                scales: {
-                    y: { beginAtZero: true }
-                },
-                plugins: {
-                    legend: { display: false }
-                },
+                scales: { y: { beginAtZero: true } },
+                plugins: { legend: { display: false } },
                 responsive: true,
                 maintainAspectRatio: false
             }
         });
-        //GRAFICA MECANICA
+
         chartM = new Chart(ctxM, {
             type: 'bar',
             data: {
@@ -86,17 +77,14 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
                 }]
             },
             options: {
-                scales: {
-                    y: { beginAtZero: true }
-                },
-                plugins: {
-                    legend: { display: false }
-                },
+                scales: { y: { beginAtZero: true } },
+                plugins: { legend: { display: false } },
                 responsive: true,
                 maintainAspectRatio: false
             }
         });
     }
+
 
 
 
