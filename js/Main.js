@@ -24,17 +24,18 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
             const canvas = document.getElementById(id);
             const parent = canvas.parentNode;
             const newCanvas = canvas.cloneNode(true);
+            newCanvas.id = id; // Asegurar mismo id
             parent.replaceChild(newCanvas, canvas);
             return newCanvas.getContext('2d');
         }   
 
         // Resetear los canvas correctamente
-        const ctxG = resetCanvas('graficoGeneral');
-        const ctxE = resetCanvas('graficoElectrica');
-        const ctxM = resetCanvas('graficoMecanica');
+        const newCtxG = resetCanvas('graficoGeneral');
+        const newCtxE = resetCanvas('graficoElectrica');
+        const newCtxM = resetCanvas('graficoMecanica');
 
         //GRAFICA GENERAL
-        chartG = new Chart(ctxG, {
+        chartG = new Chart(newCtxG, {
             type: 'doughnut',
             data: {
                 labels: ['Eléctricas', 'Mecánicas'],
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
             }
         });
         //GRAFICA ELECTRICA
-        chartE = new Chart(ctxE, {
+        chartE = new Chart(newCtxE, {
             type: 'bar',
             data: {
                 labels: ['Barnizado Normal', 'Barnizado Especial'],
@@ -77,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
             }
         });
         //GRAFICA MECANICA
-        chartM = new Chart(ctxM, {
+        chartM = new Chart(newCtxM, {
             type: 'bar',
             data: {
                 labels: ['Galvanizado', 'Pulido', 'Pintado'],
