@@ -17,9 +17,18 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
         document.getElementById('subgraficos').classList.remove('oculto');
 
         // Destruir gráficas anteriores si existen
-        if (chartG) chartG.destroy();
-        if (chartE) chartE.destroy();
-        if (chartM) chartM.destroy();
+        if (chartG instanceof Chart) {
+            chartG.destroy();
+            chartG = null;
+        }
+        if (chartE instanceof Chart) {
+            chartE.destroy();
+            chartE = null;
+        }
+        if (chartM instanceof Chart) {
+            chartM.destroy();
+            chartM = null;
+        }
 
         // Obtener contextos
         const ctxG = document.getElementById('graficoGeneral').getContext('2d');
@@ -93,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
     document.getElementById('fabricar100').addEventListener('click', () => { 
         let fabrica = new Fabrica();
         const salida = fabrica.fabricar(100);
+        console.log('DEBUG:', fabrica);
         document.getElementById('salida').innerText = salida; 
 
         actualizarGrafico(fabrica);
@@ -101,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
     document.getElementById('fabricar1000').addEventListener('click', () => { 
         let fabrica = new Fabrica();
         const salida = fabrica.fabricar(1000);
+        console.log('DEBUG:', fabrica);
         document.getElementById('salida').innerText = salida; 
 
         actualizarGrafico(fabrica);
