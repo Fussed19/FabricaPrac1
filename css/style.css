@@ -77,8 +77,9 @@ button:active {
 
 /* GRAFICAS*/
 canvas {
+    min-height: 250px;
     width: 100% !important;
-    height: 300px !important;
+    height: auto !important;
     margin: 20px 0;
 }
 

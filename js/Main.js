@@ -20,9 +20,19 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
         document.getElementById('graficoGeneral').classList.remove('oculto');
         document.getElementById('subgraficos').classList.remove('oculto');
 
-        if (chartG) chart.destroy(); // destruir anterior si existe
-        if (chartE) chart.destroy();
-        if (chartM) chart.destroy();
+        function resetCanvas(id) {
+            const canvas = document.getElementById(id);
+            const parent = canvas.parentNode;
+            const newCanvas = canvas.cloneNode(true);
+            parent.replaceChild(newCanvas, canvas);
+            return newCanvas.getContext('2d');
+        }   
+
+        // Resetear los canvas correctamente
+        const ctxG = resetCanvas('graficoGeneral');
+        const ctxE = resetCanvas('graficoElectrica');
+        const ctxM = resetCanvas('graficoMecanica');
+
         //GRAFICA GENERAL
         chartG = new Chart(ctxG, {
             type: 'doughnut',
