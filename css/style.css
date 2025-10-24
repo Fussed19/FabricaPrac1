@@ -31,18 +31,17 @@ body {
 h1 {
     font-size: 2.5rem;
     color: #2c3e50;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #34495e;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: 30px;
 }
 h4 {
     font-size: 1.2rem;
     color: rgb(218, 212, 221);
-    font-weight: normal;
 }
 h4 strong {
     color: #3498db;
