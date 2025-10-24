@@ -120,10 +120,9 @@ button:active {
 
 /* GRAFICAS*/
 canvas {
-    min-height: 300px;
     width: 100% !important;
-    height: auto;
-    max-height: 100%;
+    height: 400px;        
+    max-height: 400px;
     margin: 20px 0;
     display: block;
 }
