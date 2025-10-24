@@ -1,11 +1,7 @@
 import { Fabrica } from "./Fabrica.js";
 
-//COMPROBAMOS EL DOM LO PRIMERO
-document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion anonima.
-
-    const ctxG = document.getElementById('graficoGeneral').getContext('2d');
-    const ctxE = document.getElementById('graficoElectrica').getContext('2d');
-    const ctxM = document.getElementById('graficoMecanica').getContext('2d');
+//Esperar a que el DOM esté cargado
+document.addEventListener("DOMContentLoaded", () => {
 
     let chartG = null;
     let chartE = null;
@@ -15,15 +11,31 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
         const { contE, contM } = datos.factoria;
         const { contBN, contBE, contGal, contPul, contPint } = datos.estacion;
 
-        //QUITAMOS EL OCULTO A LOS CONTENEDORES DE LAS GRAFICAS
+        //Mostrar secciones de las gráficas
         document.getElementById('tituloGraficas').classList.remove('oculto');
         document.getElementById('graficoGeneral').classList.remove('oculto');
         document.getElementById('subgraficos').classList.remove('oculto');
 
-        if (chartG) chart.destroy(); // destruir anterior si existe
-        if (chartE) chart.destroy();
-        if (chartM) chart.destroy();
-        //GRAFICA GENERAL
+        //Destruir gráficos anteriores si existen
+        if (chartG instanceof Chart) {
+            chartG.destroy();
+            chartG = null;
+        }
+        if (chartE instanceof Chart) {
+            chartE.destroy();
+            chartE = null;
+        }
+        if (chartM instanceof Chart) {
+            chartM.destroy();
+            chartM = null;
+        }
+
+        //Obtener los contextos
+        const ctxG = document.getElementById('graficoGeneral').getContext('2d');
+        const ctxE = document.getElementById('graficoElectrica').getContext('2d');
+        const ctxM = document.getElementById('graficoMecanica').getContext('2d');
+
+        //Gráfico General (Donut)
         chartG = new Chart(ctxG, {
             type: 'doughnut',
             data: {
@@ -36,15 +48,17 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
             },
             options: {
                 cutout: '60%',
-                animation: { animateRotate: true, duration: 1000 },
+                animation: { animateRotate: true, duration: 800 },
                 plugins: {
                     legend: { display: true, position: 'bottom' }
                 },
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                aspectRatio: 1.5
             }
         });
-        //GRAFICA ELECTRICA
+
+        //Gráfico Eléctricas
         chartE = new Chart(ctxE, {
             type: 'bar',
             data: {
@@ -56,17 +70,14 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
                 }]
             },
             options: {
-                scales: {
-                    y: { beginAtZero: true }
-                },
-                plugins: {
-                    legend: { display: false }
-                },
+                scales: { y: { beginAtZero: true } },
+                plugins: { legend: { display: false } },
                 responsive: true,
                 maintainAspectRatio: false
             }
         });
-        //GRAFICA MECANICA
+
+        //Gráfico Mecánicas
         chartM = new Chart(ctxM, {
             type: 'bar',
             data: {
@@ -78,37 +89,30 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
                 }]
             },
             options: {
-                scales: {
-                    y: { beginAtZero: true }
-                },
-                plugins: {
-                    legend: { display: false }
-                },
+                scales: { y: { beginAtZero: true } },
+                plugins: { legend: { display: false } },
                 responsive: true,
                 maintainAspectRatio: false
             }
         });
     }
 
-    //Si pulsa el de 100
+    //BOTONES
+
     document.getElementById('fabricar100').addEventListener('click', () => { 
-        let fabrica = new Fabrica();
+        const fabrica = new Fabrica();
         const salida = fabrica.fabricar(100);
-        console.log('DEBUG:', fabrica);
         document.getElementById('salida').innerText = salida; 
-
         actualizarGrafico(fabrica);
     });
-    //Si pulsa el de 1000
+
     document.getElementById('fabricar1000').addEventListener('click', () => { 
-        let fabrica = new Fabrica();
+        const fabrica = new Fabrica();
         const salida = fabrica.fabricar(1000);
-        console.log('DEBUG:', fabrica);
         document.getElementById('salida').innerText = salida; 
-
         actualizarGrafico(fabrica);
     });
-    //CAMPO PERSONALIZADO
+
     document.getElementById('fabricarPersonalizado').addEventListener('click', () => {
         const input = document.getElementById('cantidadPersonalizada');
         const cantidad = parseInt(input.value);
@@ -126,4 +130,3 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
     });
 
 });
-
