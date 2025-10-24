@@ -3,6 +3,10 @@ import { Fabrica } from "./Fabrica.js";
 //COMPROBAMOS EL DOM LO PRIMERO
 document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion anonima.
 
+    const ctxG = document.getElementById('graficoGeneral').getContext('2d');
+    const ctxE = document.getElementById('graficoElectrica').getContext('2d');
+    const ctxM = document.getElementById('graficoMecanica').getContext('2d');
+
     let chartG = null;
     let chartE = null;
     let chartM = null;
@@ -10,33 +14,16 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
     function actualizarGrafico(datos) {
         const { contE, contM } = datos.factoria;
         const { contBN, contBE, contGal, contPul, contPint } = datos.estacion;
-        console.log('Datos recibidos en actualizarGrafico:', datos);
-        
-        // Mostrar las gráficas
+
+        //QUITAMOS EL OCULTO A LOS CONTENEDORES DE LAS GRAFICAS
         document.getElementById('tituloGraficas').classList.remove('oculto');
         document.getElementById('graficoGeneral').classList.remove('oculto');
         document.getElementById('subgraficos').classList.remove('oculto');
 
-        // Destruir gráficas anteriores si existen
-        if (chartG instanceof Chart) {
-            chartG.destroy();
-            chartG = null;
-        }
-        if (chartE instanceof Chart) {
-            chartE.destroy();
-            chartE = null;
-        }
-        if (chartM instanceof Chart) {
-            chartM.destroy();
-            chartM = null;
-        }
-
-        // Obtener contextos
-        const ctxG = document.getElementById('graficoGeneral').getContext('2d');
-        const ctxE = document.getElementById('graficoElectrica').getContext('2d');
-        const ctxM = document.getElementById('graficoMecanica').getContext('2d');
-
-        // Crear gráficos 
+        if (chartG) chart.destroy(); // destruir anterior si existe
+        if (chartE) chart.destroy();
+        if (chartM) chart.destroy();
+        //GRAFICA GENERAL
         chartG = new Chart(ctxG, {
             type: 'doughnut',
             data: {
@@ -57,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
                 maintainAspectRatio: false
             }
         });
-
+        //GRAFICA ELECTRICA
         chartE = new Chart(ctxE, {
             type: 'bar',
             data: {
@@ -69,13 +56,17 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
                 }]
             },
             options: {
-                scales: { y: { beginAtZero: true } },
-                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true }
+                },
+                plugins: {
+                    legend: { display: false }
+                },
                 responsive: true,
                 maintainAspectRatio: false
             }
         });
-
+        //GRAFICA MECANICA
         chartM = new Chart(ctxM, {
             type: 'bar',
             data: {
@@ -87,17 +78,17 @@ document.addEventListener("DOMContentLoaded", () => { // () => {} es una funcion
                 }]
             },
             options: {
-                scales: { y: { beginAtZero: true } },
-                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true }
+                },
+                plugins: {
+                    legend: { display: false }
+                },
                 responsive: true,
                 maintainAspectRatio: false
             }
         });
     }
-
-
-
-
 
     //Si pulsa el de 100
     document.getElementById('fabricar100').addEventListener('click', () => { 
