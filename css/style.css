@@ -30,15 +30,22 @@ body {
 /* TITULOS */
 h1 {
     font-size: 2.5rem;
-    color: rgb(218, 212, 221);
+    color: #2c3e50;
+    margin-bottom: 20px;
 }
 h3 {
     font-size: 1.8rem;
-    color: rgb(218, 212, 221);
+    color: #34495e;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 h4 {
     font-size: 1.2rem;
     color: rgb(218, 212, 221);
+    font-weight: normal;
+}
+h4 strong {
+    color: #3498db;
 }
 .grafico-titulo {
     font-size: 1.4rem;
