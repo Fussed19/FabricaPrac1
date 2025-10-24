@@ -2,6 +2,9 @@ import { Fabrica } from "./Fabrica.js";
 //SI el DOM esta cargado 
 document.addEventListener("DOMContentLoaded", () => {
 
+    // CODIGO DE LAS GRÁFICAS
+    //https://www.chartjs.org/ Documentación de la que he extraido ejemplos para implementar mis gráficas.
+    
     let chartG = null;
     let chartE = null;
     let chartM = null;
