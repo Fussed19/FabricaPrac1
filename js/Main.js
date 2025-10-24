@@ -1,31 +1,30 @@
 import { Fabrica } from "./Fabrica.js";
-
+//SI el DOM esta cargado 
 document.addEventListener("DOMContentLoaded", () => {
 
     let chartG = null;
     let chartE = null;
     let chartM = null;
-
+    //Función para actualizar los gráficos
     function actualizarGrafico(datos) {
         const { contE, contM } = datos.factoria;
         const { contBN, contBE, contGal, contPul, contPint } = datos.estacion;
 
-        // Mostrar contenedores de gráficos
+        //BOrrar clase oculto para mostrar gráficos
         document.getElementById('tituloGraficas').classList.remove('oculto');
         document.getElementById('graficoGeneral').classList.remove('oculto');
         document.getElementById('subgraficos').classList.remove('oculto');
 
-        // Destruir gráficos previos si existen
+        //Destruir gráficos previos si existen
         if (chartG) { chartG.destroy(); chartG = null; }
         if (chartE) { chartE.destroy(); chartE = null; }
         if (chartM) { chartM.destroy(); chartM = null; }
 
-        // Obtener contextos
         const ctxG = document.getElementById('graficoGeneral').getContext('2d');
         const ctxE = document.getElementById('graficoElectrica').getContext('2d');
         const ctxM = document.getElementById('graficoMecanica').getContext('2d');
 
-        // ==== GRÁFICO GENERAL ====
+        //GRAFICO GENERAL
         chartG = new Chart(ctxG, {
             type: 'doughnut',
             data: {
@@ -47,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // ==== GRÁFICO ELÉCTRICO ====
+        //GRÁFICO PIEZAS ELÉCTRICAS
         chartE = new Chart(ctxE, {
             type: 'bar',
             data: {
@@ -66,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // ==== GRÁFICO MECÁNICO ====
+        //GRÁFICO PIEZAS MECÁNICAS
         chartM = new Chart(ctxM, {
             type: 'bar',
             data: {
@@ -86,22 +85,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // === BOTONES ===
-
+    //BOTONES
+    //Boton 100
     document.getElementById('fabricar100').addEventListener('click', () => { 
         const fabrica = new Fabrica();
         const salida = fabrica.fabricar(100);
         document.getElementById('salida').innerText = salida; 
         actualizarGrafico(fabrica);
     });
-
+    //Boton 1000
     document.getElementById('fabricar1000').addEventListener('click', () => { 
         const fabrica = new Fabrica();
         const salida = fabrica.fabricar(1000);
         document.getElementById('salida').innerText = salida; 
         actualizarGrafico(fabrica);
     });
-
+    //Boton custom
     document.getElementById('fabricarPersonalizado').addEventListener('click', () => {
         const input = document.getElementById('cantidadPersonalizada');
         const cantidad = parseInt(input.value);
