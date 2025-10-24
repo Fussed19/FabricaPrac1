@@ -1,10 +1,14 @@
 import { Fabrica } from "./Fabrica.js";
+
+// PROGRAMA REALIZADO POR DIEGO PALENCIA MARTINEZ 
+// PARA LA ASIGNATURA DE FUNDAMENTOS DE TECNOLOGIA DE LOS VIDEOJUEGOS
+
 //SI el DOM esta cargado 
 document.addEventListener("DOMContentLoaded", () => {
 
     // CODIGO DE LAS GRÁFICAS
     //https://www.chartjs.org/ Documentación de la que he extraido ejemplos para implementar mis gráficas.
-    
+
     let chartG = null;
     let chartE = null;
     let chartM = null;
